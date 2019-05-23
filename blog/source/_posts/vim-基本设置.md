@@ -7,6 +7,7 @@ tags:
 在当前用户下面创建.vimrc文件
 
 ## 配置文件基本内容
+### MAC
 ```
 set fenc=utf-8 "设定默认解码 
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936 
@@ -116,4 +117,33 @@ func! CompileRunGcc()
 endfunc
 " 高亮显示普通txt文件（需要txt.vim脚本
 au BufRead,BufNewFile *  setfiletype txt
+```
+### Linux
+```
+set nu "显示行号
+syntax on "自动语法高亮
+set shiftwidth=4 "默认缩进4个空格
+set softtabstop=4 "使用tab时 tab空格数
+set tabstop=4 "tab 代表4个空格
+set nocompatible "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
+set number "显示行号
+filetype on "检测文件的类型
+set history=1000 "记录历史的行数
+"下面两行在进行编写代码时，在格式对起上很有用:
+"第一行，vim使用自动对齐，也就是把当前行的对起格式应用到下一行
+"第二行，依据上面的对起格式，智能的选择对起方式，对于类似C语言，写上很有用,不喜欢，感觉很别扭
+set autoindent
+"set smartindent
+"第一行设置tab键为4个空格，第二行设置当行之间交错时使用4个空格
+set tabstop=4
+set shiftwidth=4
+"设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
+set showmatch
+"当vim进行编辑时，如果命令错误，会发出一个响声，该设置去掉响声
+set vb t_vb=
+"查询时非常方便，如要查找book单词，当输入到/b时，会自动找到第一
+"个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的单词，依
+"次类推，进行查找时，使用此设置会快速找到答案，当你找要匹配的单词
+"时，别忘记回车
+set incsearch
 ```

@@ -63,6 +63,24 @@ NameVirtualHost *:80
         </Location>
 </VirtualHost>
 ```
+#### 配置问题
+```
+[Mon Jul 15 15:07:46.037943 2019] [dav:error] [pid 2738] [client 192.168.7.239:49491] The lock database could not be opened, preventing access to the various lock properties for the PROPFIND.  [500, #0]
+[Mon Jul 15 15:07:46.037999 2019] [dav:error] [pid 2738] [client 192.168.7.239:49491] A lock database was not specified with the DAVLockDB directive. One must be specified to use the locking functionality.  [500, #401]
+
+DavLockDB  /ect/httpd/var/DavLock
+
+Provider encountered an error while streaming a multistatus PROPFIND response
+
+chcon -R -u system_u -r object_r -t httpd_sys_content_t /var/webdav
+
+```
+
+#### window下命令行链接
+```
+net use x:  \\IP\webdav "密码" /user:"用户名"
+```
+
 ## Ubuntu 16.04下对WEBDAV的配置
 ### 配置
 ```

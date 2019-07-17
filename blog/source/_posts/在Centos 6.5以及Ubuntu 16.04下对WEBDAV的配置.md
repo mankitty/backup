@@ -41,7 +41,12 @@ LoadModule dav_module modules/mod_dav.so
 LoadModule dav_fs_module modules/mod_dav_fs.so
 
 NameVirtualHost *:80
- 
+
+<IfModule mod_dav_fs.c>
+        # Location of the WebDAV lock database.
+        DAVLockDB /var/lib/dav/lockdb
+</IfModule>
+
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
         DocumentRoot /var/webdav
@@ -73,6 +78,13 @@ DavLockDB  /ect/httpd/var/DavLock
 Provider encountered an error while streaming a multistatus PROPFIND response
 
 chcon -R -u system_u -r object_r -t httpd_sys_content_t /var/webdav
+
+不能创建文件或者目录
+
+<IfModule mod_dav_fs.c>
+        # Location of the WebDAV lock database.
+        DAVLockDB /var/lib/dav/lockdb
+</IfModule>
 
 ```
 
